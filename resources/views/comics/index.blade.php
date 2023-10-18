@@ -3,7 +3,7 @@
 @section('main-content')
   <section class="container mt-5">
     
-
+    <a class="btn btn-primary mb-4" href="{{ route('comics.create')}}">Aggiungi fumetto</a>
     <table class="table table-striped">
         <thead>
     <tr>

@@ -13,7 +13,7 @@
           <li class="list-group-item">serie: {{$comic->series}}</li>
           <li class="list-group-item">tipo: {{$comic->type}}</li>
           <li class="list-group-item">data vendita: {{$comic->sale_date}}</li>
-          <li class="list-group-item">Prezzo: {{$comic->price}}/li>
+          <li class="list-group-item">Prezzo: {{$comic->price}}</li>
           <li class="list-group-item">Descrizione:{{$comic->description}}</li>
           
         </ul>
