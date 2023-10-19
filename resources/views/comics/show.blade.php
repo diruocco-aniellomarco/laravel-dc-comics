@@ -6,7 +6,7 @@
 
     <div class="card">
         <div class="card-header">
-          {{$comic->title}}
+          <h3>{{$comic->title}}</h3>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">id: {{$comic->id}}</li>
@@ -17,8 +17,12 @@
           <li class="list-group-item">Descrizione:{{$comic->description}}</li>
           
         </ul>
-      </div>
         
+    </div>
+    <div class="text-center my-4">
+      <a href="{{ route('comics.edit', $comic)}}" class="btn btn-primary">MODIFICA</a>
+      <a href="{{ route('comics.index')}}" class="btn btn-info">Torna alla lista</a>
+    </div>    
    
   </section>
 @endsection

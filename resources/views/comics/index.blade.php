@@ -31,6 +31,7 @@
         <td>{{$comic->type}}</td>
         <td>
             <a href="{{ route('comics.show', $comic)}}">DETTAGLI</a>
+            <a href="{{ route('comics.edit', $comic)}}" class="btn btn-primary">MODIFICA</a>
         </td>
         </tr>
     @endforeach
