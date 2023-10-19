@@ -19,9 +19,21 @@
         </ul>
         
     </div>
-    <div class="text-center my-4">
-      <a href="{{ route('comics.edit', $comic)}}" class="btn btn-primary">MODIFICA</a>
-      <a href="{{ route('comics.index')}}" class="btn btn-info">Torna alla lista</a>
+    <div class="my-4 d-flex">
+      <div>
+        <a href="{{ route('comics.edit', $comic)}}" class="btn btn-primary">MODIFICA</a>
+      </div>
+      
+      <div class="mx-3">
+        <form action="{{ route('comics.destroy', $comic)}}" method="POST">
+          @csrf
+          @method('DELETE')
+          <button  class="btn btn-danger" >CANCELLA</button>
+        </form>
+      </div> 
+      <div>
+        <a href="{{ route('comics.index')}}" class="btn btn-light">Torna alla lista</a>
+      </div>     
     </div>    
    
   </section>

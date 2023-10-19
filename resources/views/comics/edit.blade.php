@@ -46,9 +46,9 @@
         </div>
 
         <div class="col-6">
-            <button class="btn btn-primary">SALVA</button>
+            <button class="btn btn-success">SALVA</button>
             <a href="{{ route('comics.show', $comic)}}" class="btn btn-warning">ANNULLA</a>
-            <a href="{{ route('comics.index')}}" class="btn btn-info">Torna alla lista</a>
+            <a href="{{ route('comics.index')}}" class="btn btn-light">Torna alla lista</a>
         </div>
     </form>
         
