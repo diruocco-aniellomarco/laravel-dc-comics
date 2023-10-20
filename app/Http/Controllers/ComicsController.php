@@ -78,7 +78,8 @@ class ComicsController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        $data = $request->all();
+        $data = $this->validation($request->all(), $comic->id);
+        
         $comic->update($data);
         return redirect()->route('comics.show', $comic);
     }
@@ -95,7 +96,7 @@ class ComicsController extends Controller
         return redirect()->route('comics.index');
     }
 
-    private function validation($data){
+    private function validation($data, $id = null){
 
         $validator = Validator::make(
             $data,
