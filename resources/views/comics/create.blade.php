@@ -4,6 +4,16 @@
   <section class="container mt-5">
     
     <h3>Aggiungi un nuovo fumetto</h3>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <h4>Correggi i seguenti errori per proseguire:</h4>
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <form class="row g-3 mt-4" action="{{ route('comics.store')}}" method="POST">
         {{-- token da inserire per farlo leggere a laravel (questioni di sicurezza) --}}

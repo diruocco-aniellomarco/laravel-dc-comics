@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comic;
+use Illuminate\Support\Facades\Validator;
+
 class ComicsController extends Controller
 {
     /**
@@ -35,7 +37,9 @@ class ComicsController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $this->validation($request->all());
+        $this->validation($data);
+
         $comic = new Comic();
         $comic->fill($data);
         $comic->save();
@@ -89,5 +93,47 @@ class ComicsController extends Controller
     {
         $comic->delete();
         return redirect()->route('comics.index');
+    }
+
+    private function validation($data){
+
+        $validator = Validator::make(
+            $data,
+            [
+                'title'=> 'required|string|max:100',
+                'description'=> 'required',
+                'thumb'=> 'required',
+                'price'=> 'required|string',
+                'series'=> 'required|string|max:100',
+                'sale_date'=> 'required|date',
+                'type'=> 'required|string|max:50',
+            ],
+            [
+                'title.required'=> 'Il titolo è obbligatorio',
+                'title.string'=> 'Il titolo deve essere una stringa',
+                'title.max'=> 'Il titolo può essere lungo massimo 100 caratteri',
+
+                'description.required'=> 'La descrizione è obbligatoria',
+                
+                'thumb.required'=> 'il link img è obbligatorio',
+                
+                'price.required'=> 'Il prezzo è obbligatorio',
+                'price.string'=> 'Il prezzo deve essere una stringa',
+                
+
+                'series.required'=> 'Il campo serie è obbligatorio',
+                'series.string'=> 'Il campo serie deve essere una stringa',
+                'series.max'=> 'Il campo serie può essere lungo massimo 100 caratteri',
+
+                'sale_date.required'=> 'Il campo data di vendita è obbligatorio',
+                'sale_date.date'=> 'Il campo data di vendita deve essere una data',
+                
+
+                'type.required'=> 'Il tipo è obbligatorio',
+                'type.string'=> 'Il tipo deve essere una stringa',
+                'type.max'=> 'Il tipo può essere lungo massimo 50 caratteri',
+            ]
+        )->validate();
+        return $validator;
     }
 }
